@@ -54,9 +54,10 @@ namespace FortuneTellerMethod_ProjectTwo
 
 
             //Part Three: Fortune: [First Name] [Last Name] will retire in [# of Years] with [Amount of Money] in the bank, a vacation home in [Location] and a [Mode of Transportation].
-            Console.WriteLine("Here is your Fortune:\n\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".");
+            Console.WriteLine("Here is your Fortune:\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".");
+            JudgeFortune();
         }
-
+        
 
         //**********************************************
         //*************This is where I will build my methods!!!!!
