@@ -52,81 +52,14 @@ namespace FortuneTellerMethod_ProjectTwo
             Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.");
             //user enters the number of siblings they have. Part One complete
 
-            // Part 2: variables to remember: firstName, lastName, usersAge, birthMonth, favoriteColor, number_of_siblings
 
-            
-            string vacationHome;
-            if (number_of_siblings < 0)
-            {
-                vacationHome = "The inlaws house";
-            }
-            else if (number_of_siblings == 0)
-            {
-                vacationHome = "Germany";
-            }
-            else if (number_of_siblings == 1)
-            {
-                vacationHome = "Cap Code";
-            }
-            else if (number_of_siblings == 2)
-            {
-                vacationHome = "Disney World";
-            }
-            else if (number_of_siblings == 3)
-            {
-                vacationHome = "Las Vegas";
-            }
-            else
-            {
-                vacationHome = "Thailand";
-            }
-            //vacation home based on number of siblings
-
-            string transportation;
-            if (favoriteColor.Equals("Red", StringComparison.CurrentCultureIgnoreCase))
-            {
-                transportation = "Car";
-            }
-            else if (favoriteColor.Equals("Orange", StringComparison.CurrentCultureIgnoreCase))
-            {
-                transportation = "Boat";
-            }
-            else if (favoriteColor.Equals("Yellow", StringComparison.CurrentCultureIgnoreCase))
-            {
-                transportation = "Plane";
-            }
-            else if (favoriteColor.Equals("Green", StringComparison.CurrentCultureIgnoreCase))
-            {
-                transportation = "Train";
-            }
-            else if (favoriteColor.Equals("Blue", StringComparison.CurrentCultureIgnoreCase))
-
-            {
-                transportation = "Motorcycle";
-            }
-            else if (favoriteColor.Equals("Indigo", StringComparison.CurrentCultureIgnoreCase))
-
-            {
-                transportation = "Bicycle";
-            }
-            else if (favoriteColor.Equals("Violet", StringComparison.CurrentCultureIgnoreCase))
-
-            {
-                transportation = "Horse";
-            }
-            else
-            {
-                transportation = "Nothing";
-            }
-            //depending on what their favorite color is, they are assigned a mode of transportation in the variable. 
-
-         
-     
-            //Part Three: Fortune
-            Console.WriteLine("Here is your Fortune:\n\n" + firstName + " " + lastName + " will retire in " + retireYears + " years with $" + bankAccount + " in the bank,\na vacation home in " + vacationHome + " and a " + transportation + ".");
+            //Part Three: Fortune: [First Name] [Last Name] will retire in [# of Years] with [Amount of Money] in the bank, a vacation home in [Location] and a [Mode of Transportation].
+            Console.WriteLine("Here is your Fortune:\n\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".");
         }
 
-        //This is where I will build my methods!!!!!
+
+        //**********************************************
+        //*************This is where I will build my methods!!!!!
         static string Greetings (string firstname, string lastname)
         {
            string greeting = "Greetings, " + firstname + " " + lastname + ". I will tell you your fortune!";
@@ -134,7 +67,7 @@ namespace FortuneTellerMethod_ProjectTwo
         }
         //this method greets the user
 
-        static int CalculateYearsBeforeRetire (int usersAge)
+        static int YearsBeforeRetire (int usersAge)
         {
             int retireYears = 0;
 
@@ -179,5 +112,83 @@ namespace FortuneTellerMethod_ProjectTwo
 
         //this method is used to determine how much money a person will have in their bank account based on their birth month
 
+        static string UsersVacationHome (int number_of_siblings)
+        {
+            string vacationHome;
+            if (number_of_siblings < 0)
+            {
+                vacationHome = "The inlaws house";
+            }
+            else if (number_of_siblings == 0)
+            {
+                vacationHome = "Germany";
+            }
+            else if (number_of_siblings == 1)
+            {
+                vacationHome = "Cap Code";
+            }
+            else if (number_of_siblings == 2)
+            {
+                vacationHome = "Disney World";
+            }
+            else if (number_of_siblings == 3)
+            {
+                vacationHome = "Las Vegas";
+            }
+            else
+            {
+                vacationHome = "Thailand";
+            }
+            return vacationHome;
+        }
+
+        //this method determines the vacation home based on number of siblings
+
+        static string ModeOfTransportation(string favoriteColor)
+        {
+            string transportation;
+            if (favoriteColor.Equals("Red", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Car";
+            }
+            else if (favoriteColor.Equals("Orange", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Boat";
+            }
+            else if (favoriteColor.Equals("Yellow", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Plane";
+            }
+            else if (favoriteColor.Equals("Green", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Train";
+            }
+            else if (favoriteColor.Equals("Blue", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Motorcycle";
+            }
+            else if (favoriteColor.Equals("Indigo", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Bicycle";
+            }
+            else if (favoriteColor.Equals("Violet", StringComparison.CurrentCultureIgnoreCase))
+            {
+                transportation = "Horse";
+            }
+            else
+            {
+                transportation = "Squeaky shopping cart";
+            }
+            return transportation;
+        }
+        //this method determines mode of transportation based on favorite color
+
+        static void JudgeFortune ()
+        {
+            string judge = "Your Fortune is great!";
+            Console.WriteLine(judge);
+        }
+
+        //Method that judges how good the fortune is
     }
 }
