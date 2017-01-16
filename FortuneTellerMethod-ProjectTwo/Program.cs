@@ -12,28 +12,81 @@ namespace FortuneTellerMethod_ProjectTwo
         {
             //part one of my program will ask a user a series of questions
 
-            Console.WriteLine("Hello, Welcome to Fortune Teller.\nPlease enter your first name to get started.");
+            Console.WriteLine("Hello, Welcome to Fortune Teller!");
+
+            Console.WriteLine("**If you wish to quit the program at any point please type \"quit\".\nIf you wish to restart at any time just type \"restart\".");
+            Console.WriteLine("/nPlease enter your first name to get started:");
+            //tells user they can quit and restart at any point 
+
+            string quitProgram = "quit";
+            string restartProgram = "restart";
             string firstName = Console.ReadLine();
+
+            if (firstName.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (firstName.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Main(args);
+                Environment.Exit(0);
+            }
 
             Console.WriteLine("Now please enter your last name.");
             string lastName = Console.ReadLine();
-            //just got users first and last name enter 
+            //just got users first and last name enter
+             
+            if (lastName.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (lastName.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Main(args);
+                Environment.Exit(0);
+            }
 
-           Console.WriteLine(Greetings(firstName, lastName));
+            Console.WriteLine(Greetings(firstName, lastName));
             //this is my greetings method writes "Greetings, firstname lastname. I will tell you your fortune."
 
             Console.WriteLine("\nNow please enter your age.");
-            int usersAge = int.Parse(Console.ReadLine());
-            //users age inputed
+            string usersAgeStr = Console.ReadLine();
+            //users age inputed as string 
 
+            if (usersAgeStr.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Environment.Exit(0);
+                }
+                else if (usersAgeStr.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Main(args);
+                    Environment.Exit(0);
+                }
+
+            int usersAge = int.Parse(usersAgeStr);
+            //users age converted to int
+           
             Console.WriteLine(firstName + ", what number month were you born? For example: enter 12 for December.");
-            int birthMonth = int.Parse(Console.ReadLine());
-            //users birth month as an integer
+            string birthMonthStr = Console.ReadLine();
+
+            if (birthMonthStr.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (birthMonthStr.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Main(args);
+                Environment.Exit(0);
+            }
+
+            int birthMonth = int.Parse(birthMonthStr);
+            //users birthMonth converted to int
 
             Console.WriteLine("Okay " + firstName + " " + lastName + ". You are " + usersAge + " and were born in month number " + birthMonth
                 + ". \nNow, please enter your favorite ROYGBIV color (spell it out).\nIf you do not know what ROYGBIV is, then enter \"Help.\"");
 
             string favoriteColor = Console.ReadLine();
+
 
             if (favoriteColor.Equals("Help", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -41,26 +94,46 @@ namespace FortuneTellerMethod_ProjectTwo
                 favoriteColor = Console.ReadLine();
                 Console.WriteLine(favoriteColor + " is your favorite color.");
             }
-            else
+           else if (favoriteColor.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (favoriteColor.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Main(args);
+                Environment.Exit(0);
+            }
+            else 
             {
                 Console.WriteLine("You have enter " + favoriteColor + " as your favorite color");
             }
             //if else statement used to determine users favorite ROYGBIV color
 
             Console.WriteLine("Finally, please enter the number of siblings you have (as digit).");
-            int number_of_siblings = int.Parse(Console.ReadLine());
-            Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.");
-            //user enters the number of siblings they have. Part One complete
+           string number_of_siblingsStr = Console.ReadLine();
 
+            if (number_of_siblingsStr.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (number_of_siblingsStr.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Main(args);
+                Environment.Exit(0);
+            }
+           int number_of_siblings=  int.Parse(number_of_siblingsStr);
+            //converted number of siblings to int
+
+            Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.");
 
             //Part Three: Fortune: [First Name] [Last Name] will retire in [# of Years] with [Amount of Money] in the bank, a vacation home in [Location] and a [Mode of Transportation].
             Console.WriteLine("Here is your Fortune:\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".");
             JudgeFortune();
-        }
-        
-
+        }    
+    
         //**********************************************
         //*************This is where I will build my methods!!!!!
+
         static string Greetings (string firstname, string lastname)
         {
            string greeting = "Greetings, " + firstname + " " + lastname + ". I will tell you your fortune!";
@@ -191,5 +264,6 @@ namespace FortuneTellerMethod_ProjectTwo
         }
 
         //Method that judges how good the fortune is
-    }
-}
+      
+        }
+      }
