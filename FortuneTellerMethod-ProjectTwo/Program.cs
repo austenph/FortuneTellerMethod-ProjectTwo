@@ -12,10 +12,10 @@ namespace FortuneTellerMethod_ProjectTwo
         {
             //part one of my program will ask a user a series of questions
 
-            Console.WriteLine("Hello, Welcome to Fortune Teller!");
+            Console.WriteLine("Hello, Welcome to Fortune Teller!\n");
 
-            Console.WriteLine("**If you wish to quit the program at any point please type \"quit\".\nIf you wish to restart at any time just type \"restart\".");
-            Console.WriteLine("/nPlease enter your first name to get started:");
+            Console.WriteLine("**If you wish to quit the program at any point please type \"quit\".\n**If you wish to restart at any time just type \"restart\".");
+            Console.WriteLine("\nPlease enter your first name to get started:");
             //tells user they can quit and restart at any point 
 
             string quitProgram = "quit";
@@ -64,9 +64,22 @@ namespace FortuneTellerMethod_ProjectTwo
                 }
 
             int usersAge = int.Parse(usersAgeStr);
-            //users age converted to int
+
+            //loop to test for a reasonable age entered 
+            while (true)
+            {
+                if (usersAge < 1 || usersAge > 120)
+                {
+                    Console.WriteLine("I believe you entered an impossible age, please re-enter your age now:");
+                    usersAge = int.Parse(Console.ReadLine());
+                }
+                else
+                {
+                    break;
+                }
+            }
            
-            Console.WriteLine(firstName + ", what number month were you born? For example: enter 12 for December.");
+          Console.WriteLine(firstName + ", what number month were you born? For example: enter 12 for December.");
             string birthMonthStr = Console.ReadLine();
 
             if (birthMonthStr.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
@@ -82,31 +95,79 @@ namespace FortuneTellerMethod_ProjectTwo
             int birthMonth = int.Parse(birthMonthStr);
             //users birthMonth converted to int
 
+            //loop to test for a reasonable age entered 
+            while (true)
+            {
+                if (birthMonth < 1 || birthMonth > 12)
+                {
+                    Console.WriteLine("I believe you entered an impossible birth month, please re-enter your birth month now:");
+                    birthMonth = int.Parse(Console.ReadLine());
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             Console.WriteLine("Okay " + firstName + " " + lastName + ". You are " + usersAge + " and were born in month number " + birthMonth
-                + ". \nNow, please enter your favorite ROYGBIV color (spell it out).\nIf you do not know what ROYGBIV is, then enter \"Help.\"");
+                + ". \n\nNow, please enter your favorite ROYGBIV color (spell it out).\nIf you do not know what ROYGBIV is, then enter \"Help.\"");
 
             string favoriteColor = Console.ReadLine();
+            string[] ROYGBIV = { "red", "orange", "yellow", "green", "blue", "indigo", "violet" };
 
+            while(true)
+       { 
+                if(favoriteColor.Equals("red", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("orange", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("yellow", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+               else if (favoriteColor.Equals("green", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("blue", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("indigo", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("violet", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    break;
+                }
+                else if (favoriteColor.Equals("Help", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Console.WriteLine("ROYGBIV stands for: Red, Orange, Yellow, Green, Blue, Indigo, Violet.\nNow enter which color is your favorite (spell it out).");
+                    favoriteColor = Console.ReadLine();
+                }
+                else if (favoriteColor.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Environment.Exit(0);
+                }
+                else if (favoriteColor.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Main(args);
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a color that is part of ROYGBIV.");
+                    favoriteColor = Console.ReadLine();
+                }
+            }
 
-            if (favoriteColor.Equals("Help", StringComparison.CurrentCultureIgnoreCase))
-            {
-                Console.WriteLine("ROYGBIV stands for: Red, Orange, Yellow, Green, Blue, Indigo, Violet.\nNow enter which color is your favorite (spell it out).");
-                favoriteColor = Console.ReadLine();
-                Console.WriteLine(favoriteColor + " is your favorite color.");
-            }
-           else if (favoriteColor.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
-            {
-                Environment.Exit(0);
-            }
-            else if (favoriteColor.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
-            {
-                Main(args);
-                Environment.Exit(0);
-            }
-            else 
-            {
-                Console.WriteLine("You have enter " + favoriteColor + " as your favorite color");
-            }
+         Console.WriteLine("You have enter " + favoriteColor + " as your favorite color");
+
             //if else statement used to determine users favorite ROYGBIV color
 
             Console.WriteLine("Finally, please enter the number of siblings you have (as digit).");
@@ -127,7 +188,8 @@ namespace FortuneTellerMethod_ProjectTwo
             Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.");
 
             //Part Three: Fortune: [First Name] [Last Name] will retire in [# of Years] with [Amount of Money] in the bank, a vacation home in [Location] and a [Mode of Transportation].
-            Console.WriteLine("Here is your Fortune:\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".");
+            Console.WriteLine("\nHere is your Fortune:\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".\n");
+            Console.WriteLine("The judgement on your fortune is: ");
             JudgeFortune();
         }    
     
@@ -141,19 +203,18 @@ namespace FortuneTellerMethod_ProjectTwo
         }
         //this method greets the user
 
-        static int YearsBeforeRetire (int usersAge)
+        static int YearsBeforeRetire(int usersAge)
         {
             int retireYears = 0;
-
-            if (usersAge % 2 == 0)
-            {
-                retireYears = 50; //even number
-            }
-            else
-            {
-                retireYears = 100;
-            }
-            return retireYears;
+                if (usersAge % 2 == 0)
+                {
+                    retireYears = 50; //even number
+                }
+                else
+                {
+                    retireYears = 100;
+                }
+                return retireYears;
         }
         //this method calculates the number of years before the user retires based on the age they enter
 
