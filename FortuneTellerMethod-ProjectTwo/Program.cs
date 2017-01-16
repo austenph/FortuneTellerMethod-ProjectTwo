@@ -166,7 +166,7 @@ namespace FortuneTellerMethod_ProjectTwo
                 }
             }
 
-         Console.WriteLine("You have enter " + favoriteColor + " as your favorite color");
+         Console.WriteLine("You have enter " + favoriteColor + " as your favorite color.");
 
             //if else statement used to determine users favorite ROYGBIV color
 
@@ -185,12 +185,28 @@ namespace FortuneTellerMethod_ProjectTwo
            int number_of_siblings=  int.Parse(number_of_siblingsStr);
             //converted number of siblings to int
 
-            Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.");
+            Console.WriteLine("You have entered " + number_of_siblings + " as the number of siblings you have.\n");
 
             //Part Three: Fortune: [First Name] [Last Name] will retire in [# of Years] with [Amount of Money] in the bank, a vacation home in [Location] and a [Mode of Transportation].
-            Console.WriteLine("\nHere is your Fortune:\n" + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".\n");
-            Console.WriteLine("The judgement on your fortune is: ");
+            Console.WriteLine("Now hit enter to view fortune!");
+            Console.ReadLine();
+            Console.WriteLine("YOUR FORTUNE: " + firstName + " " + lastName + " will retire in " + YearsBeforeRetire(usersAge) + " years with $" + BankAccountWhenRetire(birthMonth) + " in the bank,\na vacation home in " + UsersVacationHome(number_of_siblings) + " and a " + ModeOfTransportation(favoriteColor) + ".\n");
+            Console.WriteLine("Hit enter to see the judgement on your fortune:");
+            Console.ReadLine();
             JudgeFortune();
+            Console.WriteLine("\nWould you like to play again? If so, enter \"restart\" If not, enter \"quit\".");
+
+            string replay = Console.ReadLine();
+            if (replay.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+                Environment.Exit(0);
+            }
+            else if (replay.Equals(restartProgram, StringComparison.CurrentCultureIgnoreCase))
+            {
+
+                Main(args);
+                Environment.Exit(0);
+            }
         }    
     
         //**********************************************
