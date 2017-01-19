@@ -20,7 +20,10 @@ namespace FortuneTellerMethod_ProjectTwo
 
             string quitProgram = "quit";
             string restartProgram = "restart";
-            string firstName = Console.ReadLine();
+            string userinput = Console.ReadLine();
+            RestartorQuit(userinput);
+
+            string firstName = userinput;
 
             if (firstName.Equals(quitProgram, StringComparison.CurrentCultureIgnoreCase))
             {
@@ -341,6 +344,17 @@ namespace FortuneTellerMethod_ProjectTwo
         }
 
         //Method that judges how good the fortune is
-      
+      static void RestartorQuit (string userinput)
+        {
+            if (userinput.ToUpper() == "QUIT")
+            {
+                Environment.Exit(0);
+            }
+            else if (userinput.ToUpper() == "RESTART")
+            {
+                Main(Environment.GetCommandLineArgs());
+                Environment.Exit(0);
+            }
+        }
         }
       }
